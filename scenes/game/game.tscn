@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dew1je68vksy5"]
+
+[ext_resource type="Script" path="res://scenes/game/game.gd" id="1_ewu8x"]
+[ext_resource type="Script" path="res://scripts/handlers/handler_fishbone_shards.gd" id="2_i7l0m"]
+[ext_resource type="PackedScene" uid="uid://s2gii5awo15c" path="res://scenes/user_interface/user_interface.tscn" id="2_u2tuu"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_ewu8x")
+
+[node name="Handlers" type="Node" parent="."]
+
+[node name="FishboneShards" type="Node" parent="Handlers"]
+script = ExtResource("2_i7l0m")
+
+[node name="UserInterface" parent="." instance=ExtResource("2_u2tuu")]

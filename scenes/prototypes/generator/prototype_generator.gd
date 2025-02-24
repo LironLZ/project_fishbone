@@ -5,8 +5,6 @@ extends Control
 
 
 
-## Reference to the label displaying the current amount of fishbone shards in storage.
-@export var label : Label
 ## Reference to the button starting the generation.
 @export var button : Button
 ## Reference to the timer.
@@ -17,14 +15,11 @@ extends Control
 @export var user_interface : UserInterface
 
 
-## Current amount of fishbone shards in storage.
-var fishbone_shards : int = 0
 
 
 
 ##  Initialize the label.
 func _ready() -> void:
-	update_label_text()
 	
 	visible = true
 	
@@ -33,12 +28,9 @@ func _ready() -> void:
 	
 ## Creates fishbone shards and stores it.
 func create_fishbone_shards() -> void:
-	fishbone_shards += 1
-	update_label_text()
+	HandlerFishboneShards.ref.create_fishbone_shards(1)
 	
-## Updates the label text to match the current amount of fishbone shards in storage.
-func update_label_text() -> void:
-	label.text = "Fishbone Shards : %s" %fishbone_shards
+
 	
 	
 	

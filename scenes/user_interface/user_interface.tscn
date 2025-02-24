@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://s2gii5awo15c"]
+[gd_scene load_steps=5 format=3 uid="uid://s2gii5awo15c"]
 
 [ext_resource type="Script" path="res://scenes/user_interface/user_interface.gd" id="1_8cjgs"]
 [ext_resource type="PackedScene" uid="uid://bup82qky38rpq" path="res://scenes/prototypes/generator/prototype_generator.tscn" id="1_jvp7q"]
+[ext_resource type="Script" path="res://scenes/user_interface/fishbone_shards_label.gd" id="2_nfbn2"]
 [ext_resource type="PackedScene" uid="uid://bxcj2l6xbomv3" path="res://scenes/prototypes/clicker/prototype_clicker.tscn" id="3_gdf27"]
 
 [node name="UserInterface" type="Control"]
@@ -60,6 +61,9 @@ text = "Prototype Generator"
 layout_mode = 2
 text = "Prototype Clicker"
 
+[node name="PrototypeUpgradesLink" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/LeftPanel/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 16
@@ -87,9 +91,10 @@ theme_override_constants/margin_bottom = 16
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/LeftPanel/VBoxContainer/Resources/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/LeftPanel/VBoxContainer/Resources/MarginContainer/VBoxContainer"]
+[node name="FishboneShardsLabel" type="Label" parent="HBoxContainer/LeftPanel/VBoxContainer/Resources/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Fishbone Shards : 15"
+script = ExtResource("2_nfbn2")
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -116,3 +121,4 @@ user_interface = NodePath("../../..")
 
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/PrototypeGeneratorLink" to="." method="_on_prototype_generator_link_pressed"]
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/PrototypeClickerLink" to="." method="_on_prototype_clicker_link_pressed"]
+[connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/PrototypeUpgradesLink" to="." method="_on_prototype_upgrades_link_pressed"]
