@@ -8,8 +8,8 @@ var max_level : int = 1
 func _init() -> void:
 	level = Game.ref.data.ti_upgrades.u_03_unlock_kraken_brain
 	title = "Unlock Kraken Brain"
-	base_cost = 5
-	cost = 5
+	base_cost = 2
+	cost = 2
 	
 
 ## Returns the description of the upgrade.

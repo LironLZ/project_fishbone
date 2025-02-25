@@ -11,3 +11,5 @@ extends Resource
 
 ## Contains TIUpgrades data to save & load.
 @export var ti_upgrades : DataTIUpgrades = DataTIUpgrades.new()
+## Contains Ocean data to save and load.
+@export var ocean : DataOcean = DataOcean.new()

@@ -30,6 +30,7 @@ func fishbone_shards() -> int:
 ## Create a specific amount of fishbone shards.
 func create_fishbone_shards(quantity : int) -> void:
 	Game.ref.data.fishbone_shards += quantity
+	Game.ref.data.ocean.fishbone_shards += quantity
 	fishbone_shards_created.emit(quantity)
 	
 ## Consume a specific amount of fishbone shards.	
