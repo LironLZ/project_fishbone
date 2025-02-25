@@ -25,8 +25,18 @@ var data : Data
 ## Singleton check & Data initialization.
 func _enter_tree() -> void:
 	_singleton_check()
-	data = Data.new()
+
+	# Attempt to load data first
 	SaveSystem.load_data()
+
+	# If loading failed (or if no save file exists), create a new Data instance
+	if not data:
+		data = Data.new()
+	
+	# Ensure ti_upgrades is never null
+	if not data.ti_upgrades:
+		data.ti_upgrades = DataTIUpgrades.new()
+
 	
 func _ready() -> void:
 	var node_user_interface : UserInterface = scene_user_interface.instantiate() as UserInterface

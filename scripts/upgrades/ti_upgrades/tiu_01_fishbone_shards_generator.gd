@@ -19,7 +19,8 @@ func _init() -> void:
 func description() -> String:
 	var text : String = "Awaken the Ocean to start generating Fishbone Shards."
 	text += "\n[b]Effect :[/b] passive Fishbone Shard generation"
-	text += "\n[b]Cost :[/b] %s Tidal Instinct" %cost
+	if level < max_level:
+		text += "\n[b]Cost :[/b] %s Tidal Instinct" %cost
 	return text
 
 
@@ -42,7 +43,7 @@ func can_afford() -> bool:
 
 
 
-## Consumes fishbone shards to level up.
+## Consumes Tidal Instinct to level up.
 func level_up() -> void:
 	if level >= max_level:
 		return 
