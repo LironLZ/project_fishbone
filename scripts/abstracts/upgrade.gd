@@ -5,6 +5,8 @@ extends Node
 
 ## Emitted when the upgrade has leveled up.
 signal leveled_up
+## Emitted when an upgrade is unlocked.
+signal upgrade_unlocked
 
 ## Level of the upgrade.
 var level : int = -1
@@ -37,3 +39,6 @@ func can_afford() -> bool:
 ## Consumes fishbone shards to level up.
 func level_up() -> void:
 	printerr("level_up() method not defined.")
+	
+func is_unlocked() -> bool:
+	return false

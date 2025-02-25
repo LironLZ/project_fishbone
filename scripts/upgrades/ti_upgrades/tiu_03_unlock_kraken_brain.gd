@@ -10,6 +10,8 @@ func _init() -> void:
 	title = "Unlock Kraken Brain"
 	base_cost = 2
 	cost = 2
+	if not is_unlocked():
+		HandlerTIUpgrades.ref.u_01_fishbone_shard_generation.leveled_up.connect(_on_tiu01_level_up)
 	
 
 ## Returns the description of the upgrade.
@@ -49,3 +51,16 @@ func level_up() -> void:
 	
 	leveled_up.emit()
 	HandlerTIUpgrades.ref.upgrade_leveled_up.emit(self)
+	
+	
+## Returns whether or not the upgrade has been unlocked.
+func is_unlocked() -> bool:
+	if Game.ref.data.ti_upgrades.u_01_fishbone_shards_generation_level:
+		return true
+		
+	return false
+	
+## Triggered when TIU01 is purchased. Unlocks this upgrade.
+func _on_tiu01_level_up() -> void:
+	HandlerTIUpgrades.ref.u_01_fishbone_shard_generation.leveled_up.disconnect(_on_tiu01_level_up)
+	HandlerTIUpgrades.ref.upgrade_unlocked.emit(self)

@@ -59,3 +59,7 @@ func level_up() -> void:
 	
 	leveled_up.emit()
 	HandlerTIUpgrades.ref.upgrade_leveled_up.emit(self)
+	
+## Returns whether or not the upgrade is unlocked. 
+func is_unlocked() -> bool:
+	return true
