@@ -1,12 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://dew1je68vksy5"]
+[gd_scene load_steps=7 format=3 uid="uid://dew1je68vksy5"]
 
 [ext_resource type="Script" path="res://scenes/game/game.gd" id="1_ewu8x"]
 [ext_resource type="Script" path="res://scripts/handlers/handler_fishbone_shards.gd" id="2_i7l0m"]
-[ext_resource type="PackedScene" uid="uid://s2gii5awo15c" path="res://scenes/user_interface/user_interface.tscn" id="2_u2tuu"]
+[ext_resource type="PackedScene" uid="uid://s2gii5awo15c" path="res://scenes/user_interface/user_interface.tscn" id="2_l5ves"]
 [ext_resource type="Script" path="res://scripts/handlers/handler_tidal_instinct.gd" id="3_nccxi"]
+[ext_resource type="Script" path="res://scripts/handlers/handler_ti_upgrades.gd" id="4_m8jei"]
+[ext_resource type="Script" path="res://scripts/handlers/handler_fishbone_shards_generator.gd" id="6_ilh31"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_ewu8x")
+scene_user_interface = ExtResource("2_l5ves")
 
 [node name="Handlers" type="Node" parent="."]
 
@@ -16,10 +19,18 @@ script = ExtResource("2_i7l0m")
 [node name="TidalInstinct" type="Node" parent="Handlers"]
 script = ExtResource("3_nccxi")
 
+[node name="TIUpgrades" type="Node" parent="Handlers"]
+script = ExtResource("4_m8jei")
+
+[node name="FishboneShardsGenerator" type="Node" parent="Handlers" node_paths=PackedStringArray("timer")]
+script = ExtResource("6_ilh31")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="Handlers/FishboneShardsGenerator"]
+
 [node name="SaveTimer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
 
-[node name="UserInterface" parent="." instance=ExtResource("2_u2tuu")]
-
+[connection signal="timeout" from="Handlers/FishboneShardsGenerator/Timer" to="Handlers/FishboneShardsGenerator" method="_on_timer_timeout"]
 [connection signal="timeout" from="SaveTimer" to="." method="_on_save_timer_timeout"]
