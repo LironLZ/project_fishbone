@@ -7,7 +7,8 @@ extends Control
 enum Views {
 	PROTOTYPE_GENERATOR,
 	PROTOTYPE_CLICKER,
-	PROTOTYPE_UPGRADES, 
+	PROTOTYPE_UPGRADES,
+	TIDAL_INSTINCT, 
 }
 
 ## Emitted when something requested navigation. Includes the view target.
@@ -26,3 +27,7 @@ func _on_prototype_clicker_link_pressed() -> void:
 ## Triggered when the prototype upgrades link is clicked.
 func _on_prototype_upgrades_link_pressed() -> void:
 	navigation_requested.emit(Views.PROTOTYPE_UPGRADES)
+
+## Triggered when the Tidal Instinct link is clicked.
+func _on_tidal_instinct_link_pressed() -> void:
+	navigation_requested.emit(Views.TIDAL_INSTINCT)

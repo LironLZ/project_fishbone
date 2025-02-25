@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://s2gii5awo15c"]
+[gd_scene load_steps=8 format=3 uid="uid://s2gii5awo15c"]
 
 [ext_resource type="Script" path="res://scenes/user_interface/user_interface.gd" id="1_8cjgs"]
 [ext_resource type="PackedScene" uid="uid://bup82qky38rpq" path="res://scenes/prototypes/generator/prototype_generator.tscn" id="1_jvp7q"]
 [ext_resource type="Script" path="res://scenes/user_interface/fishbone_shards_label.gd" id="2_nfbn2"]
+[ext_resource type="Script" path="res://scenes/user_interface/tidal_instinct_label.gd" id="3_1y12r"]
 [ext_resource type="PackedScene" uid="uid://bxcj2l6xbomv3" path="res://scenes/prototypes/clicker/prototype_clicker.tscn" id="3_gdf27"]
 [ext_resource type="PackedScene" uid="uid://dgqmimxufdgu4" path="res://scenes/prototypes/upgrades/prototype_upgrades.tscn" id="5_gu0dr"]
+[ext_resource type="PackedScene" uid="uid://da7i5th3uvdia" path="res://scenes/views/tidal_instinct/tidal_instinct_view.tscn" id="6_eu17m"]
 
 [node name="UserInterface" type="Control"]
 layout_mode = 3
@@ -66,6 +68,10 @@ text = "Prototype Clicker"
 layout_mode = 2
 text = "Prototype Upgrades"
 
+[node name="TidalInstinctLink" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Tidal Instinct"
+
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/LeftPanel/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 16
@@ -98,6 +104,10 @@ layout_mode = 2
 text = "Fishbone Shards : 15"
 script = ExtResource("2_nfbn2")
 
+[node name="TidalInstinctLabel" type="Label" parent="HBoxContainer/LeftPanel/VBoxContainer/Resources/MarginContainer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("3_1y12r")
+
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 0
@@ -127,6 +137,12 @@ layout_mode = 1
 user_interface = NodePath("../../..")
 view = 2
 
+[node name="TidalInstinctView" parent="HBoxContainer/MainView" node_paths=PackedStringArray("user_interface") instance=ExtResource("6_eu17m")]
+layout_mode = 1
+user_interface = NodePath("../../..")
+view = 3
+
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/PrototypeGeneratorLink" to="." method="_on_prototype_generator_link_pressed"]
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/PrototypeClickerLink" to="." method="_on_prototype_clicker_link_pressed"]
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/PrototypeUpgradesLink" to="." method="_on_prototype_upgrades_link_pressed"]
+[connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/TidalInstinctLink" to="." method="_on_tidal_instinct_link_pressed"]
