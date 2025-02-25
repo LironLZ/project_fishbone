@@ -20,7 +20,7 @@ func _ready() -> void:
 
 ## Create 1 fishbone shards.
 func create_fishbone_shards() -> void:
-	HandlerFishboneShards.ref.create_fishbone_shards(1)
+	HandlerFishboneShards.ref.trigger_clicker()
 	
 
 	

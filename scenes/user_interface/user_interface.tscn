@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://s2gii5awo15c"]
+[gd_scene load_steps=6 format=3 uid="uid://s2gii5awo15c"]
 
 [ext_resource type="Script" path="res://scenes/user_interface/user_interface.gd" id="1_8cjgs"]
 [ext_resource type="PackedScene" uid="uid://bup82qky38rpq" path="res://scenes/prototypes/generator/prototype_generator.tscn" id="1_jvp7q"]
 [ext_resource type="Script" path="res://scenes/user_interface/fishbone_shards_label.gd" id="2_nfbn2"]
 [ext_resource type="PackedScene" uid="uid://bxcj2l6xbomv3" path="res://scenes/prototypes/clicker/prototype_clicker.tscn" id="3_gdf27"]
+[ext_resource type="PackedScene" uid="uid://dgqmimxufdgu4" path="res://scenes/prototypes/upgrades/prototype_upgrades.tscn" id="5_gu0dr"]
 
 [node name="UserInterface" type="Control"]
 layout_mode = 3
@@ -63,6 +64,7 @@ text = "Prototype Clicker"
 
 [node name="PrototypeUpgradesLink" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
 layout_mode = 2
+text = "Prototype Upgrades"
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/LeftPanel/VBoxContainer"]
 layout_mode = 2
@@ -118,6 +120,12 @@ visible = false
 layout_mode = 1
 view = 1
 user_interface = NodePath("../../..")
+
+[node name="PrototypeUpgrades" parent="HBoxContainer/MainView" node_paths=PackedStringArray("user_interface") instance=ExtResource("5_gu0dr")]
+visible = false
+layout_mode = 1
+user_interface = NodePath("../../..")
+view = 2
 
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/PrototypeGeneratorLink" to="." method="_on_prototype_generator_link_pressed"]
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/PrototypeClickerLink" to="." method="_on_prototype_clicker_link_pressed"]

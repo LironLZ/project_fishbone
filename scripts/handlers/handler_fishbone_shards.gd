@@ -42,3 +42,10 @@ func consume_fishbone_shards(quantity : int) -> Error:
 	fishbone_shards_consumed.emit(quantity)
 		
 	return Error.OK
+	
+## Triggered by the clicker; creates fishbone shards.
+func trigger_clicker() -> void:
+	var quantity : int = 1
+	quantity += Game.ref.data.up_01_level
+	
+	create_fishbone_shards(quantity)
