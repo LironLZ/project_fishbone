@@ -1,5 +1,5 @@
 class_name Data
-extends Node
+extends Resource
 ## Contain data to save and load.
 
 ## Current amount of fishbone shards avaialable

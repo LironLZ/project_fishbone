@@ -12,4 +12,10 @@ script = ExtResource("1_ewu8x")
 [node name="FishboneShards" type="Node" parent="Handlers"]
 script = ExtResource("2_i7l0m")
 
+[node name="SaveTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
 [node name="UserInterface" parent="." instance=ExtResource("2_u2tuu")]
+
+[connection signal="timeout" from="SaveTimer" to="." method="_on_save_timer_timeout"]
