@@ -1,37 +1,16 @@
 class_name PrototypeClicker
-extends Control
+extends View
 ## A clicker prototype creating fishbone shards.
-
-## View reference.
-@export var view : UserInterface.Views
-## Reference to the user interface.
-@export var user_interface : UserInterface
-
-
 
 ## Initialize the label at launch.
 func _ready() -> void:
+	super()
 	visible = false
-	
-	user_interface.navigation_requested.connect(_on_navigation_request)
-	
-	
 
-
-## Create 1 fishbone shards.
+## Create 1 fishbone shard.
 func create_fishbone_shards() -> void:
 	HandlerFishboneShards.ref.trigger_clicker()
-	
 
-	
 ## Triggered when the create fishbone shards button is pressed.
 func _on_button_pressed() -> void:
 	create_fishbone_shards()
-	
-## Watch for navigation requests and react accordingly.
-func _on_navigation_request(requested_view : UserInterface.Views) -> void:
-	if requested_view == view:
-		visible = true
-		return
-		
-	visible = false

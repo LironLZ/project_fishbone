@@ -118,8 +118,8 @@ user_interface = NodePath("../../..")
 [node name="PrototypeClicker" parent="HBoxContainer/MainView" node_paths=PackedStringArray("user_interface") instance=ExtResource("3_gdf27")]
 visible = false
 layout_mode = 1
-view = 1
 user_interface = NodePath("../../..")
+view = 1
 
 [node name="PrototypeUpgrades" parent="HBoxContainer/MainView" node_paths=PackedStringArray("user_interface") instance=ExtResource("5_gu0dr")]
 visible = false
