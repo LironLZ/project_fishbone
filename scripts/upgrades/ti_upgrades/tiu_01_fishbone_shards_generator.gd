@@ -7,12 +7,13 @@ var max_level : int = 1
 
 func _init() -> void:
 	level = Game.ref.data.ti_upgrades.u_01_fishbone_shards_generation_level
-	title = "Awaken the Ocean"
 	base_cost = 1
 	calculate_cost()
 
 
-
+## Returns the title of the upgrade.
+func title() -> String:
+	return "Awaken the Ocean."
 
 
 ## Returns the description of the upgrade.
@@ -63,3 +64,8 @@ func level_up() -> void:
 ## Returns whether or not the upgrade is unlocked. 
 func is_unlocked() -> bool:
 	return true
+
+
+## Returns whehter or not the upgrade has been disabled.
+func is_disabled() -> bool:
+	return Game.ref.data.ti_upgrades.u_01_fishbone_shards_generation_level

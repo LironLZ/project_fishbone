@@ -7,12 +7,17 @@ var max_level : int = 1
 ## Initialize values.
 func _init() -> void:
 	level = Game.ref.data.ti_upgrades.u_03_unlock_kraken_brain
-	title = "Unlock Kraken Brain"
 	base_cost = 2
 	cost = 2
 	if not is_unlocked():
 		HandlerTIUpgrades.ref.u_01_fishbone_shard_generation.leveled_up.connect(_on_tiu01_level_up)
 	
+
+## Returns the title of the upgrade
+func title() -> String:
+	return "Unlock Kraken Brain"
+
+
 
 ## Returns the description of the upgrade.
 func description() -> String:
@@ -64,3 +69,9 @@ func is_unlocked() -> bool:
 func _on_tiu01_level_up() -> void:
 	HandlerTIUpgrades.ref.u_01_fishbone_shard_generation.leveled_up.disconnect(_on_tiu01_level_up)
 	HandlerTIUpgrades.ref.upgrade_unlocked.emit(self)
+
+
+## Returns whether or not the upgrade has been disabled.
+func is_disabled() -> bool:
+	return Game.ref.data.ti_upgrades.u_03_unlock_kraken_brain
+	

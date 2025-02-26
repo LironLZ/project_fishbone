@@ -8,6 +8,9 @@ extends Control
 @export var label_description : RichTextLabel
 ## Reference to the purchase button.
 @export var button : Button
+## 
+@export var veil : ColorRect
+
 
 ## Upgrade to display.
 var upgrade : Upgrade
@@ -17,22 +20,24 @@ func _ready() -> void:
 	if not upgrade:
 		upgrade = Up01ClickerUpgrade.new()
 		
+	update_component()
+	
+	if not upgrade.is_disabled():
+		HandlerFishboneShards.ref.fishbone_shards_created.connect(update_button)
+		HandlerFishboneShards.ref.fishbone_shards_consumed.connect(update_button)
+	
+		upgrade.leveled_up.connect(update_component)
+
+
+func update_component() -> void:
+	update_button()
 	update_label_title()
 	update_label_description()
-	update_button()
-	
-	
-	HandlerFishboneShards.ref.fishbone_shards_created.connect(update_button)
-	HandlerFishboneShards.ref.fishbone_shards_consumed.connect(update_button)
-	
-	upgrade.leveled_up.connect(update_label_title)
-	upgrade.leveled_up.connect(update_label_description)
-	upgrade.leveled_up.connect(update_button)
+	update_veil()
 
 ## Updates the title of the upgrade.
 func update_label_title() -> void:
-	var text : String = upgrade.title + " (%s)" %upgrade.level
-	label_title.text = text
+	label_title.text = upgrade.title()
 
 
 ## Updates the description of the upgrade.
@@ -47,7 +52,26 @@ func update_button(_quantity : int = -1) -> void:
 		return 
 		
 	button.disabled = true
+	
+## Hides or displays veil based on upgrade status.
+func update_veil() -> void:
+	if upgrade.is_disabled():
+		veil.visible = true
+		
+	else:
+		veil.visible = false
 
 ## Triggered when the purchase button is pressed.
 func _on_purchase_button_pressed() -> void:
 	upgrade.level_up()
+
+## Triggered when the upgrade levels up.
+## Update the component and check if the signals must be disconnected or not.
+func _on_upgrade_level_up() -> void:
+	update_component()
+	
+	if upgrade.is_disabled():
+		HandlerFishboneShards.ref.fishbone_shards_created.disconnect(update_button)
+		HandlerFishboneShards.ref.fishbone_shards_consumed.disconnect(update_button)
+		
+		upgrade.leveled_up.disconnect(_on_upgrade_level_up)
