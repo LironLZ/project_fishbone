@@ -17,7 +17,7 @@ func _connect_signals() -> void:
 
 ## Updates the fishbone shards per second display.
 func _update_fishbone_shards_per_second() -> void:
-	var text : String = "[b]Fishbone Shards/s :[/b] %s" %HandlerFishboneShardsGenerator.ref.generator_power
+	var text : String = "[b]Fishbone Shards.s⁻¹ :[/b] %s" %HandlerFishboneShardsGenerator.ref.generator_power
 	fishbone_shards_per_second.text = text
 	
 	
