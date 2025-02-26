@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://da7i5th3uvdia"]
 
 [ext_resource type="Script" path="res://scenes/views/tidal_instinct/tidal_instinct_view.gd" id="1_qjcie"]
-[ext_resource type="PackedScene" uid="uid://beu327hu84qib" path="res://scenes/prototypes/upgrades/components/compo_upgrade.tscn" id="2_rps8q"]
-[ext_resource type="PackedScene" uid="uid://ole7t4rvutpl" path="res://scenes/components/compo_progress_bar.tscn" id="3_5ffoj"]
+[ext_resource type="PackedScene" uid="uid://beu327hu84qib" path="res://scenes/components/upgrade/compo_upgrade.tscn" id="2_rps8q"]
+[ext_resource type="PackedScene" uid="uid://ole7t4rvutpl" path="res://scenes/components/fishbone_shards_milestone_progress_bar/compo_progress_bar.tscn" id="3_5ffoj"]
 
 [node name="TidalInstinctView" type="Control" node_paths=PackedStringArray("tiu_area")]
 layout_mode = 3
