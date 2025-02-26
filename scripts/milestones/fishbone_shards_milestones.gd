@@ -3,6 +3,10 @@ extends Node
 ## Generates Tidal Instinct every X amount of Fishbone Shards being created.
 
 
+## Emitted when the Milestone progress changed.
+signal progressed
+## Emitted when a new milestone is created.
+signal new_milestone_created
 
 ## Amount of fishbone shards required to create the next tidal instinct.
 var fishbone_shards_goal : int = -1
@@ -27,6 +31,10 @@ func initialize_new_milestone(transferred_progress : int = 0) -> void:
 		
 	fishbone_shards_progress = 0
 	ocean.fishbone_shards_milestone_progress = fishbone_shards_progress
+	new_milestone_created.emit()
+	
+	
+
 ## Checks for milestone completion.
 func check_for_completion() -> void:
 	if fishbone_shards_progress < fishbone_shards_goal:
@@ -37,11 +45,13 @@ func check_for_completion() -> void:
 	HandlerTidalInstinct.ref.create_tidal_instinct(1)
 	
 	initialize_new_milestone(fishbone_shards_excess)
+	
 	check_for_completion()
 	
 ## Triggered when fishbone shards are created. Progresses the milestone.
 func _on_fishbone_shards_created(quantity : int) -> void:
 	fishbone_shards_progress += quantity
 	ocean.fishbone_shards_milestone_progress = fishbone_shards_progress
+	progressed.emit()
 
 	check_for_completion()

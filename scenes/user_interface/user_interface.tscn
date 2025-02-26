@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://s2gii5awo15c"]
+[gd_scene load_steps=9 format=3 uid="uid://s2gii5awo15c"]
 
 [ext_resource type="Script" path="res://scenes/user_interface/user_interface.gd" id="1_8cjgs"]
 [ext_resource type="PackedScene" uid="uid://bup82qky38rpq" path="res://scenes/prototypes/generator/prototype_generator.tscn" id="1_jvp7q"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bxcj2l6xbomv3" path="res://scenes/prototypes/clicker/prototype_clicker.tscn" id="3_gdf27"]
 [ext_resource type="PackedScene" uid="uid://dgqmimxufdgu4" path="res://scenes/prototypes/upgrades/prototype_upgrades.tscn" id="5_gu0dr"]
 [ext_resource type="PackedScene" uid="uid://da7i5th3uvdia" path="res://scenes/views/tidal_instinct/tidal_instinct_view.tscn" id="6_eu17m"]
+[ext_resource type="PackedScene" uid="uid://csh4m33duhk1x" path="res://scenes/views/ocean/ocean_view.tscn" id="8_pxq1b"]
 
 [node name="UserInterface" type="Control"]
 layout_mode = 3
@@ -57,16 +58,23 @@ theme_override_constants/margin_bottom = 16
 layout_mode = 2
 
 [node name="PrototypeGeneratorLink" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Prototype Generator"
 
 [node name="PrototypeClickerLink" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Prototype Clicker"
 
 [node name="PrototypeUpgradesLink" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Prototype Upgrades"
+
+[node name="OceanLink" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Ocean"
 
 [node name="TidalInstinctLink" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -122,6 +130,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="PrototypeGenerator" parent="HBoxContainer/MainView" node_paths=PackedStringArray("user_interface") instance=ExtResource("1_jvp7q")]
+visible = false
 layout_mode = 1
 user_interface = NodePath("../../..")
 
@@ -138,6 +147,12 @@ user_interface = NodePath("../../..")
 view = 2
 
 [node name="TidalInstinctView" parent="HBoxContainer/MainView" node_paths=PackedStringArray("user_interface") instance=ExtResource("6_eu17m")]
+visible = false
+layout_mode = 1
+user_interface = NodePath("../../..")
+view = 4
+
+[node name="OceanView" parent="HBoxContainer/MainView" node_paths=PackedStringArray("user_interface") instance=ExtResource("8_pxq1b")]
 layout_mode = 1
 user_interface = NodePath("../../..")
 view = 3
@@ -145,4 +160,5 @@ view = 3
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/PrototypeGeneratorLink" to="." method="_on_prototype_generator_link_pressed"]
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/PrototypeClickerLink" to="." method="_on_prototype_clicker_link_pressed"]
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/PrototypeUpgradesLink" to="." method="_on_prototype_upgrades_link_pressed"]
+[connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/OceanLink" to="." method="_on_ocean_link_pressed"]
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/TidalInstinctLink" to="." method="_on_tidal_instinct_link_pressed"]

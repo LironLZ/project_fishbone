@@ -1,0 +1,121 @@
+[gd_scene load_steps=4 format=3 uid="uid://csh4m33duhk1x"]
+
+[ext_resource type="Script" path="res://scenes/views/ocean/ocean_view.gd" id="1_k8yds"]
+[ext_resource type="Script" path="res://scenes/components/compo_active_effects.gd" id="2_0pfle"]
+[ext_resource type="PackedScene" uid="uid://ole7t4rvutpl" path="res://scenes/components/compo_progress_bar.tscn" id="3_mfn2o"]
+
+[node name="OceanView" type="Control" node_paths=PackedStringArray("intro_text", "main_content")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k8yds")
+intro_text = NodePath("IntroText")
+main_content = NodePath("MainMargin")
+
+[node name="MainMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMargin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Header" type="Label" parent="MainMargin/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Ocean"
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMargin/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="HSeparator" type="HSeparator" parent="MainMargin/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="MainMargin/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMargin/VBoxContainer/MarginContainer2" node_paths=PackedStringArray("fishbone_shards_per_second")]
+layout_mode = 2
+theme_override_constants/separation = 16
+script = ExtResource("2_0pfle")
+fishbone_shards_per_second = NodePath("FishboneShardsPerSecond")
+
+[node name="ActiveEffects" type="Label" parent="MainMargin/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Active Effects: "
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMargin/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="HSeparator" type="HSeparator" parent="MainMargin/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="FishboneShardsPerSecond" type="RichTextLabel" parent="MainMargin/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[b]Fishbone Shards/s :[/b]
+<no_value>"
+fit_content = true
+
+[node name="Space" type="Control" parent="MainMargin/VBoxContainer/MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="FishboneShardsMilestones" type="Label" parent="MainMargin/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Progress towards next Tidal Instinct"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MainMargin/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="HSeparator" type="HSeparator" parent="MainMargin/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="MainMargin/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 64
+
+[node name="ProgressBar" parent="MainMargin/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer3" instance=ExtResource("3_mfn2o")]
+layout_mode = 2
+
+[node name="IntroText" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HeaderLarge"
+text = "Your Ocean Isn't Active.
+Use Your first Tidal Instinct to Awaken it"
+horizontal_alignment = 1
+vertical_alignment = 1

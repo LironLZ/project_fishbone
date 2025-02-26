@@ -15,6 +15,8 @@ func _enter_tree() -> void:
 		return
 	queue_free()
 	
+## Emitted when generator power was calculated.
+signal generator_power_calculated
 
 ## Reference to the  generator timer.
 @export var timer : Timer
@@ -54,3 +56,5 @@ func calculate_generator_power() -> void:
 	new_power += Game.ref.data.ti_upgrades.u_02_fishbone_shards_boost_level
 	
 	generator_power = new_power
+	
+	generator_power_calculated.emit()
