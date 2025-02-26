@@ -25,14 +25,14 @@ signal upgrade_unlocked(upgrade : Upgrade)
 ## Reference to TIUpgrade 02.
 @onready var u_02_fishbone_shards_boost : TIU02FishboneShardsBoost = TIU02FishboneShardsBoost.new()
 ## Reference to CCUpgrade 03.
-@onready var u_03_unlock_kraken_brain : TIU03UnlockKrakenBrain = TIU03UnlockKrakenBrain.new()
+@onready var u_03_unlock_deep_seas : TIU03UnlockDeepSeas = TIU03UnlockDeepSeas.new()
 
 ## Returns all TIUpgrades.
 func get_all_upgrades() -> Array[Upgrade]:
 	return [
 		u_01_fishbone_shard_generation,
 		u_02_fishbone_shards_boost,
-		u_03_unlock_kraken_brain,
+		u_03_unlock_deep_seas,
 	]
 
 

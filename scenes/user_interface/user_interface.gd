@@ -7,6 +7,7 @@ extends Control
 enum Views {
 	OCEAN,
 	TIDAL_INSTINCT, 
+	DEEP_SEAS, 
 }
 
 ## Emitted when something requested navigation. Includes the view target.
@@ -26,3 +27,7 @@ func _on_tidal_instinct_link_pressed() -> void:
 func _on_ocean_link_pressed() -> void:
 	navigation_requested.emit(Views.OCEAN)
 	
+
+## Triggered when the Deep Seas Link Button is clicked.
+func _on_deep_seas_link_pressed() -> void:
+	navigation_requested.emit(Views.DEEP_SEAS)

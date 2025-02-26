@@ -1,12 +1,12 @@
-class_name TIU03UnlockKrakenBrain
+class_name TIU03UnlockDeepSeas
 extends Upgrade
-## TIUpgrade 03 : Unlocks Kraken Brain.
+## TIUpgrade 03 : Unlocks Deep Seas.
 
 ## Max Level.
 var max_level : int = 1 
 ## Initialize values.
 func _init() -> void:
-	level = Game.ref.data.ti_upgrades.u_03_unlock_kraken_brain
+	level = Game.ref.data.ti_upgrades.u_03_unlock_deep_seas
 	base_cost = 2
 	cost = 2
 	if not is_unlocked():
@@ -15,13 +15,13 @@ func _init() -> void:
 
 ## Returns the title of the upgrade
 func title() -> String:
-	return "Unlock Kraken Brain"
+	return "Unlock Deep Seas"
 
 
 
 ## Returns the description of the upgrade.
 func description() -> String:
-	var text : String = "[b]Effects :[/b] unlock the ability to create Kraken Brain."
+	var text : String = "[b]Effects :[/b] unlock the ability to create Deep Seas."
 	
 	if level < max_level:
 		text += "\n[b]Cost :[/b] %s Tidal Instinct" %cost
@@ -52,7 +52,7 @@ func level_up() -> void:
 		return
 		
 	level += 1
-	Game.ref.data.ti_upgrades.u_03_unlock_kraken_brain = true
+	Game.ref.data.ti_upgrades.u_03_unlock_deep_seas = true
 	
 	leveled_up.emit()
 	HandlerTIUpgrades.ref.upgrade_leveled_up.emit(self)
@@ -73,5 +73,5 @@ func _on_tiu01_level_up() -> void:
 
 ## Returns whether or not the upgrade has been disabled.
 func is_disabled() -> bool:
-	return Game.ref.data.ti_upgrades.u_03_unlock_kraken_brain
+	return Game.ref.data.ti_upgrades.u_03_unlock_deep_seas
 	

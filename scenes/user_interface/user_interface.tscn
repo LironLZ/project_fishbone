@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://s2gii5awo15c"]
+[gd_scene load_steps=8 format=3 uid="uid://s2gii5awo15c"]
 
 [ext_resource type="Script" path="res://scenes/user_interface/user_interface.gd" id="1_8cjgs"]
+[ext_resource type="Script" path="res://scenes/user_interface/deep_seas_link_button.gd" id="2_06g54"]
 [ext_resource type="Script" path="res://scenes/user_interface/fishbone_shards_label.gd" id="2_nfbn2"]
 [ext_resource type="Script" path="res://scenes/user_interface/tidal_instinct_label.gd" id="3_1y12r"]
 [ext_resource type="PackedScene" uid="uid://da7i5th3uvdia" path="res://scenes/views/tidal_instinct/tidal_instinct_view.tscn" id="6_eu17m"]
+[ext_resource type="PackedScene" uid="uid://d0rg3ko6mln80" path="res://scenes/views/deep_seas/deep_seas_view.tscn" id="7_b4yur"]
 [ext_resource type="PackedScene" uid="uid://csh4m33duhk1x" path="res://scenes/views/ocean/ocean_view.tscn" id="8_pxq1b"]
 
 [node name="UserInterface" type="Control"]
@@ -61,6 +63,11 @@ text = "Ocean"
 [node name="TidalInstinctLink" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Tidal Instinct"
+
+[node name="DeepSeasLink" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "DeepSeasLink"
+script = ExtResource("2_06g54")
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/LeftPanel/VBoxContainer"]
 layout_mode = 2
@@ -121,5 +128,11 @@ view = 1
 layout_mode = 1
 user_interface = NodePath("../../..")
 
+[node name="DeepSeasView" parent="HBoxContainer/MainView" node_paths=PackedStringArray("user_interface") instance=ExtResource("7_b4yur")]
+layout_mode = 1
+user_interface = NodePath("../../..")
+view = 2
+
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/OceanLink" to="." method="_on_ocean_link_pressed"]
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/TidalInstinctLink" to="." method="_on_tidal_instinct_link_pressed"]
+[connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/DeepSeasLink" to="." method="_on_kraken_brain_link_pressed"]
