@@ -12,3 +12,6 @@ extends Resource
 @export var ti_upgrades : DataTIUpgrades = DataTIUpgrades.new()
 ## Contains Ocean data to save and load.
 @export var ocean : DataOcean = DataOcean.new()
+
+## Contains Deep Seas data.
+@export var deep_seas : Array[DataDeepSeas] = []

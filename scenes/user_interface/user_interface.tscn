@@ -125,14 +125,14 @@ user_interface = NodePath("../../..")
 view = 1
 
 [node name="OceanView" parent="HBoxContainer/MainView" node_paths=PackedStringArray("user_interface") instance=ExtResource("8_pxq1b")]
+visible = false
 layout_mode = 1
 user_interface = NodePath("../../..")
 
 [node name="DeepSeasView" parent="HBoxContainer/MainView" node_paths=PackedStringArray("user_interface") instance=ExtResource("7_b4yur")]
 layout_mode = 1
 user_interface = NodePath("../../..")
-view = 2
 
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/OceanLink" to="." method="_on_ocean_link_pressed"]
 [connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/TidalInstinctLink" to="." method="_on_tidal_instinct_link_pressed"]
-[connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/DeepSeasLink" to="." method="_on_kraken_brain_link_pressed"]
+[connection signal="pressed" from="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer/DeepSeasLink" to="." method="_on_deep_seas_link_pressed"]

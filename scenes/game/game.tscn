@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dew1je68vksy5"]
+[gd_scene load_steps=8 format=3 uid="uid://dew1je68vksy5"]
 
 [ext_resource type="Script" path="res://scenes/game/game.gd" id="1_ewu8x"]
 [ext_resource type="Script" path="res://scripts/handlers/handler_fishbone_shards.gd" id="2_i7l0m"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/handlers/handler_tidal_instinct.gd" id="3_nccxi"]
 [ext_resource type="Script" path="res://scripts/handlers/handler_ti_upgrades.gd" id="4_m8jei"]
 [ext_resource type="Script" path="res://scripts/handlers/handler_fishbone_shards_generator.gd" id="6_ilh31"]
+[ext_resource type="Script" path="res://scripts/handlers/handler_deep_seas.gd" id="7_v3dsw"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_ewu8x")
@@ -27,6 +28,13 @@ script = ExtResource("6_ilh31")
 timer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="Handlers/FishboneShardsGenerator"]
+
+[node name="DeepSeas" type="Node" parent="Handlers" node_paths=PackedStringArray("timer")]
+script = ExtResource("7_v3dsw")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="Handlers/DeepSeas"]
+autostart = true
 
 [node name="SaveTimer" type="Timer" parent="."]
 wait_time = 5.0
