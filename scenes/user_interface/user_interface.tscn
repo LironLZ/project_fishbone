@@ -66,7 +66,7 @@ text = "Tidal Instinct"
 
 [node name="DeepSeasLink" type="LinkButton" parent="HBoxContainer/LeftPanel/VBoxContainer/Navigator/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "DeepSeasLink"
+text = "Deep Seas"
 script = ExtResource("2_06g54")
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/LeftPanel/VBoxContainer"]

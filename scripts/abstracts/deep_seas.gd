@@ -11,7 +11,7 @@ var data_index : int = -1
 ## Amount of Fishbone Shards inside the Deep Seas.
 var fishbone_shards : int = 0
 ## Amount of fishbone shards the deep seas attract every second.
-var fishbone_shards_consumed : int = 0 
+var fishbone_shards_consumed : int = 1
 
 ## Tries to consume fishbone shards.
 func _on_consume_fishbone_shards() -> void:

@@ -21,7 +21,8 @@ signal deep_seas_created
 	
 ## List of Deep Seas.
 var deep_seas : Array[DeepSeas] = []
-
+## Maximum amount of deep seas the player can create.
+var max_deep_seas_count : int = 1
 
 ## Load Deep Seas.
 func _ready() -> void:
@@ -55,8 +56,11 @@ func get_all_deep_seas() -> Array:
 	
 	
 ## Create a new deep sea and add it to the list.
-func create_deep_seas() -> void:
+func create_deep_seas() -> Error:
+	if deep_seas.size() >= max_deep_seas_count:
+		return Error.FAILED
 	var new_deep_seas : DeepSeas = DeepSeas.new()
+	
 	new_deep_seas.data_index = deep_seas.size()
 	
 	timer.timeout.connect(new_deep_seas._on_consume_fishbone_shards)
@@ -70,7 +74,7 @@ func create_deep_seas() -> void:
 	Game.ref.data.deep_seas.append(data_deep_seas)
 	
 	deep_seas_created.emit()
-	
+	return Error.OK
 	
 ## Changes the fishbone shards consumption value of a single Deep Sea.
 func update_deep_seas_fishbone_shards_consumption_value(index : int, value : int) -> void:
