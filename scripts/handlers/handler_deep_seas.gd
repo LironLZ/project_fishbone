@@ -15,6 +15,10 @@ func _enter_tree() -> void:
 	queue_free()
 	
 signal deep_seas_created
+
+signal deep_seas_effect_updated
+
+signal effect_fishbone_shards_consumption_updated
 	
 ## Reference to the fishbone shards consumption timer.
 @export var timer : Timer
@@ -32,6 +36,13 @@ var max_attraction_value : int = 5
 var min_release_value : int = 1
 ## Maximum release value Deep seas can have.
 var max_release_value : int = 5
+
+## Total Fishbone Shards generation effects from all deep seas.
+var effect_fishbone_shards_generation : int = 0
+## Total amount of Fishbone Shards being consumed by all Deep Seas.
+var effect_fishbone_shards_consumed : int = 0
+
+
 
 ## Load Deep Seas.
 func _ready() -> void:
@@ -63,6 +74,7 @@ func load_deep_seas() -> void:
 		
 		deep_seas.append(new_deep_seas)
 		
+	calculate_effect_fishbone_shards_consumed()
 
 ## Returns the full list of Deep Seas.
 func get_all_deep_seas() -> Array:
@@ -92,6 +104,8 @@ func create_deep_seas() -> Error:
 	
 	Game.ref.data.deep_seas.append(data_deep_seas)
 	
+	calculate_effect_fishbone_shards_consumed()
+	
 	deep_seas_created.emit()
 	return Error.OK
 	
@@ -100,8 +114,35 @@ func update_deep_seas_fishbone_shards_attraction_value(index : int, value : int)
 	deep_seas[index].attraction_value = value
 	Game.ref.data.deep_seas[index].attraction_value = value
 	
+	calculate_effect_fishbone_shards_consumed()
 
 ## Changes the Nautilus Gem release value of a single Deep Sea.
 func update_deep_seas_release_value(index : int, value : int) -> void:
 	deep_seas[index].release_value = value 
 	Game.ref.data.deep_seas[index].release_value = value
+	
+## Calculates all the Deep Seas effects into a single property.
+func calculate_deep_seas_effect_fishbone_shards_generation() -> void:
+	var old_effect : int = effect_fishbone_shards_generation
+	var new_effect : int = 0
+	
+	for deep_seas : DeepSeas in deep_seas:
+		new_effect += deep_seas.effect_fishbone_shards_generation
+		
+	effect_fishbone_shards_generation = new_effect
+	
+	if new_effect != old_effect:
+		deep_seas_effect_updated.emit()
+
+
+## Comulates all the attraction values to calculate the total amount of fishbone shards being consumed.
+func calculate_effect_fishbone_shards_consumed() -> void:
+	var old_effect : int = effect_fishbone_shards_consumed
+	var new_effect : int = 0
+	for deep_seas : DeepSeas in deep_seas:
+		new_effect += deep_seas.attraction_value
+		
+	effect_fishbone_shards_consumed = new_effect
+	
+	if effect_fishbone_shards_consumed != old_effect:
+		effect_fishbone_shards_consumption_updated.emit()

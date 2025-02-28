@@ -40,3 +40,5 @@ func consume_nautilus_gem(quantity : int) -> Error:
 	nautilus_gem_consumed.emit(quantity)
 	
 	return Error.OK
+	
+	

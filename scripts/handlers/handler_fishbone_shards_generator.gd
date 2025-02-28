@@ -26,6 +26,7 @@ func _ready() -> void:
 	calculate_generator_power()
 		
 	HandlerTIUpgrades.ref.upgrade_leveled_up.connect(watch_for_upgrades_level_up)
+	HandlerDeepSeas.ref.deep_seas_effect_updated.connect(_on_deep_seas_effect_updated)
 	
 	if Game.ref.data.ti_upgrades.u_01_fishbone_shards_generation_level:
 		timer.start()
@@ -42,7 +43,12 @@ func _on_timer_timeout() -> void:
 ## Triggered when an upgrade levels up. Recalculate generator power.
 func watch_for_upgrades_level_up(upgrade : Upgrade) -> void:
 	calculate_generator_power()
-	
+
+
+func _on_deep_seas_effect_updated() -> void:
+	calculate_generator_power()
+
+
 ## Wait for tiu_01 to be purchased. 
 func watch_for_tiu01_level_up() -> void:
 	timer.start()
@@ -54,6 +60,7 @@ func watch_for_tiu01_level_up() -> void:
 func calculate_generator_power() -> void:
 	var new_power : int = 1
 	new_power += Game.ref.data.ti_upgrades.u_02_fishbone_shards_boost_level
+	new_power += HandlerDeepSeas.ref.effect_fishbone_shards_generation
 	
 	generator_power = new_power
 	

@@ -20,7 +20,8 @@ var attraction_value : int = 1
 ## Amount of Nautilus Gem being released
 var release_value : int = 1
 
-	
+## Modifier applied to fishbone shards generation.
+var effect_fishbone_shards_generation : int = 0
 
 ## Tries to consume fishbone shards.
 func attract_fishbone_shards() -> void:
@@ -36,18 +37,30 @@ func attract_fishbone_shards() -> void:
 
 ## Transforms Fishbone Shards into Nautilus Gem.
 func refine_fishbone_shards() -> void:
-	if fishbone_shards >= 25:
+	var nautilus_gem_to_create : int = -1
+	if fishbone_shards >= 100:
+		var error : Error = consume_fishbone_shards(9)
+		
+		if error:
+			return
+			
+		nautilus_gem_to_create = 5
+		
+		
+	elif fishbone_shards >= 25:
 		var error : Error = consume_fishbone_shards(3)
 		
 		if error:
 			return
 		
-		var nautilus_gem_to_create : int = 2
-		
+		nautilus_gem_to_create = 2
+	
+	if nautilus_gem_to_create != -1:
 		nautilus_gem += nautilus_gem_to_create
 		Game.ref.data.ocean.nautilus_gem += nautilus_gem_to_create
 		Game.ref.data.deep_seas[data_index].nautilus_gem = nautilus_gem
 		
+		calculate_effect_fishbone_shards_generation()
 		composition_updated.emit()
 		
 ## Tries to consume a certain amount of Fishbone Shards.	
@@ -66,6 +79,7 @@ func consume_nautilus_gem(quantity : int) -> Error:
 		nautilus_gem -= quantity
 		Game.ref.data.deep_seas[data_index].nautilus_gem = nautilus_gem
 		
+		calculate_effect_fishbone_shards_generation()
 		
 		return Error.OK
 		
@@ -88,6 +102,22 @@ func release_nautilus_gem() -> void:
 	HandlerNautilusGem.ref.create_nautilus_gem(quantity)
 	
 	
+## Calculate the potency of fishbone shards generation effect.
+func calculate_effect_fishbone_shards_generation() -> void:
+	var old_effect : int = effect_fishbone_shards_generation
+	
+	if nautilus_gem >= 25:
+		effect_fishbone_shards_generation = 1
+		
+	if nautilus_gem >= 100:
+		effect_fishbone_shards_generation = 2
+	
+	if effect_fishbone_shards_generation != old_effect:
+		HandlerDeepSeas.ref.calculate_deep_seas_effect_fishbone_shards_generation()
+		
+		
+		
+		
 ## Triggered when the Deep Seas timer times out.
 func _on_deep_seas_timer_timeout() -> void:
 	attract_fishbone_shards()
