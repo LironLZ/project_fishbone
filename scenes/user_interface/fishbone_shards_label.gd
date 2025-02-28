@@ -12,4 +12,8 @@ func _ready() -> void:
 	
 ## Updates the text to reflect the current amount of fishbone shards
 func update_text(_quantity : int = -1) -> void:
-	text = "Fishbone Shards : %s" %HandlerFishboneShards.ref.fishbone_shards()
+	if HandlerFishboneShards.ref.fishbone_shards():
+		text = "Fishbone Shards : %s" %HandlerFishboneShards.ref.fishbone_shards()
+
+	else:
+		text = ""

@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dew1je68vksy5"]
+[gd_scene load_steps=9 format=3 uid="uid://dew1je68vksy5"]
 
 [ext_resource type="Script" path="res://scenes/game/game.gd" id="1_ewu8x"]
 [ext_resource type="Script" path="res://scripts/handlers/handler_fishbone_shards.gd" id="2_i7l0m"]
 [ext_resource type="PackedScene" uid="uid://s2gii5awo15c" path="res://scenes/user_interface/user_interface.tscn" id="2_l5ves"]
 [ext_resource type="Script" path="res://scripts/handlers/handler_tidal_instinct.gd" id="3_nccxi"]
+[ext_resource type="Script" path="res://scripts/handlers/handler_nautilus_gem.gd" id="4_asygl"]
 [ext_resource type="Script" path="res://scripts/handlers/handler_ti_upgrades.gd" id="4_m8jei"]
 [ext_resource type="Script" path="res://scripts/handlers/handler_fishbone_shards_generator.gd" id="6_ilh31"]
 [ext_resource type="Script" path="res://scripts/handlers/handler_deep_seas.gd" id="7_v3dsw"]
@@ -16,6 +17,9 @@ scene_user_interface = ExtResource("2_l5ves")
 
 [node name="FishboneShards" type="Node" parent="Handlers"]
 script = ExtResource("2_i7l0m")
+
+[node name="NautilusGem" type="Node" parent="Handlers"]
+script = ExtResource("4_asygl")
 
 [node name="TidalInstinct" type="Node" parent="Handlers"]
 script = ExtResource("3_nccxi")
