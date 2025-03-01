@@ -22,7 +22,7 @@ func spawn_fishbone():
 		var spawn_x = randf_range(margin, viewport.size.x - margin)
 		
 		fishbone.position = Vector2(spawn_x, spawn_y)
-		fishbone.scale = Vector2(0.05, 0.05)  # Make it small
+		fishbone.scale = Vector2(0.03, 0.03)  # Make it small
 		fishbone.rotation_degrees = randf_range(0, 360)  # Random rotation
 
 		# Add it to the scene
