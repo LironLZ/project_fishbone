@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2t2xkv2bp6ig"
-path="res://.godot/imported/bass.png-96bc4659f11b3cb545ca72ce5c69c380.ctex"
+uid="uid://c0nncopb0m2b4"
+path="res://.godot/imported/goldfish.png-a03188cb99ea2bc099c3e8cc523cebea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bass.png"
-dest_files=["res://.godot/imported/bass.png-96bc4659f11b3cb545ca72ce5c69c380.ctex"]
+source_file="res://assets/goldfish.png"
+dest_files=["res://.godot/imported/goldfish.png-a03188cb99ea2bc099c3e8cc523cebea.ctex"]
 
 [params]
 

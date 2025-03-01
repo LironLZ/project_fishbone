@@ -103,7 +103,7 @@ script = ExtResource("3_1y12r")
 
 [node name="FishboneShardsLabel" type="Label" parent="HBoxContainer/LeftPanel/VBoxContainer/Resources/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Fishbone Shards : 15"
+text = "Fishbone Shards : 0"
 script = ExtResource("2_nfbn2")
 
 [node name="NautilusGemLabel" type="Label" parent="HBoxContainer/LeftPanel/VBoxContainer/Resources/MarginContainer/VBoxContainer"]

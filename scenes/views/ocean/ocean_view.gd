@@ -39,7 +39,8 @@ func _on_tiu01_level_up() -> void:
 ## Called when the fish button is clicked.
 func _on_fish_clicked() -> void:
 	Game.ref.data.fishbone_shards += 1
-	_update_fishbone_shards_label()
+	HandlerFishboneShards.ref.fishbone_shards_created.emit(1)  # Emit signal to update label immediately
+
 
 ## Updates the label displaying the number of Fishbone Shards.
 func _update_fishbone_shards_label() -> void:
