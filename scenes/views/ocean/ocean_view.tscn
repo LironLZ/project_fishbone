@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://csh4m33duhk1x"]
+[gd_scene load_steps=7 format=3 uid="uid://csh4m33duhk1x"]
 
 [ext_resource type="Script" path="res://scenes/views/ocean/ocean_view.gd" id="1_k8yds"]
 [ext_resource type="Script" path="res://scenes/components/active_effects/compo_active_effects.gd" id="2_0pfle"]
 [ext_resource type="PackedScene" uid="uid://ole7t4rvutpl" path="res://scenes/components/fishbone_shards_milestone_progress_bar/compo_progress_bar.tscn" id="3_mfn2o"]
 [ext_resource type="Texture2D" uid="uid://c0nncopb0m2b4" path="res://assets/goldfish.png" id="4_t3cnh"]
+[ext_resource type="Script" path="res://scenes/views/ocean/fish_clicker.gd" id="5_74qg5"]
+[ext_resource type="PackedScene" uid="uid://dodnv1e87hanl" path="res://scenes/views/fishbone.tscn" id="6_ow5q3"]
 
 [node name="OceanView" type="Control" node_paths=PackedStringArray("intro_text", "main_content", "fish_clicker")]
 layout_mode = 3
@@ -15,7 +17,7 @@ grow_vertical = 2
 script = ExtResource("1_k8yds")
 intro_text = NodePath("IntroText")
 main_content = NodePath("MainMargin")
-fish_clicker = NodePath("Clicker")
+fish_clicker = NodePath("FishClicker")
 
 [node name="MainMargin" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -122,17 +124,22 @@ Use Your first Tidal Instinct to Awaken it"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Clicker" type="TextureButton" parent="."]
+[node name="FishClicker" type="TextureButton" parent="."]
 custom_minimum_size = Vector2(0, 450)
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 595.0
-offset_top = -500.0
-offset_right = -505.0
+offset_left = 429.0
+offset_top = 467.0
+offset_right = -409.0
+offset_bottom = 17.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 texture_normal = ExtResource("4_t3cnh")
+ignore_texture_size = true
 stretch_mode = 0
+script = ExtResource("5_74qg5")
+fishbone_scene = ExtResource("6_ow5q3")
+
+[connection signal="pressed" from="FishClicker" to="FishClicker" method="_on_pressed"]

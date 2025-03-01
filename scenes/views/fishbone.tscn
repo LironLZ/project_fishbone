@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dodnv1e87hanl"]
+
+[ext_resource type="Texture2D" uid="uid://c1qxnwxe6svxq" path="res://assets/fishbone.png" id="2_sht7b"]
+
+[node name="FishBone" type="Node2D"]
+
+[node name="Fishbone" type="Sprite2D" parent="."]
+position = Vector2(805, 396)
+texture = ExtResource("2_sht7b")
